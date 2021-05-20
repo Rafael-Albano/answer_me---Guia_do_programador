@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/default/head_default.ejs') %>
+</head>
+
+
+  <body>
+    <header class="cabecalho">
+      <%- include('partials/navbar.ejs') %>
+    </header>
+
+    <main class="container mt-5">
+
+      <% values.forEach(function(value){ %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title"> <%= value.titulo %> </h5>
+            <hr>
+            <p class="card-text"> <%= value.descricao %> </p>
+            <hr>
+            <a href="/pergunta/<%= value.id %>" class="btn btn-primary">Responder</a>
+          </div>
+        </div>
+      <% }); %>
+    </main>
+  </body>
+
+  <%- include('partials/default/script_default.ejs') %>
+</html>

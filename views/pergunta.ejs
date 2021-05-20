@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/default/head_default.ejs') %>
+</head>
+
+
+  <body>
+    <header class="cabecalho">
+      <%- include('partials/navbar.ejs') %>
+    </header>
+
+    <main class="container mt-5">
+      <hr>
+      <div class="pergunta mt-5 mb-5">
+          <h3 class="card-title"> <%= value.titulo %> </h3>
+          <p class="card-text"> <%= value.descricao %> </p>
+      </div>
+
+      <hr>
+
+      <form class="mt-3" method="POST" action="/enviar/resposta">
+
+        <h4>Responda</h4>
+
+        <div class="mb-3" hidden>
+          <input type="text" class="form-control" id="exampleFormControlInput1" name="perguntaId" value="<%= value.id %>">
+        </div>
+
+        <div class="mb-3">
+          <label for="resp" class="form-label">Responder:</label>
+          <textarea class="form-control" id="resp" name="corpo" rows="3" placeholder="Digite aqui a sua resposta" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Responder</button>
+      </form>
+      
+      <div>
+        <hr>
+        <h3 class="mt-4 mb-4 text-center">Respostas</h3>
+        <hr>
+        <% valueRespostas.forEach(function(value){ %>
+          <div class="card mt-3">
+            <div class="card-body">
+              <p class="card-text"><%= value.corpo %></p>
+            </div>
+          </div>
+        <%})%>
+      </div>
+      
+
+      
+    </main>
+  </body>
+
+  <%- include('partials/default/script_default.ejs') %>
+</html>
